@@ -1,0 +1,5 @@
+- insert:
+    - id: xiaohongshu-ops
+      name: dsh-workbench-xiaohongshu-ops
+      config:
+        root: !!js dshHomePath('xiaohongshu-ops')
