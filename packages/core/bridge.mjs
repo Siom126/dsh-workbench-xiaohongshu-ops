@@ -5,6 +5,12 @@
 //   transport = { paired: true, getStatus(), createPairingCode(), run(task) }
 // 未注入传输（v1）时所有调用都明确返回“未配对”，绝不假装读到了数据。
 // core 绝不直接碰任何宿主能力。
+//
+// 共用会话（shared_session_requests）在 DSH 里只能呈现为“待处理”
+// 清单：DSH 没有用户可见的 Muse 聊天浏览器、没有主代理可代劳，
+// reportSharedSessionLogin 是宿主/扩展调用的桥接回调——没有它，
+// 门禁绝不能声称已登录；共用会话请求绝不能自动完成、绝不能谎称
+// 已登录。见 gate.mjs 的 sharedChannelActive / sharedRouteMessage。
 
 export const BRIDGE_NOT_PAIRED = 'BRIDGE_NOT_PAIRED'
 
